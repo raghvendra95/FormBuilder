@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Builder</title>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{% static "js/bootstrap-dialog.js" %}"></script>
+<script src="{% static "js/bootstrap-dialog.min.js" %}"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+  <div class="col-md-6">
+  <form>
+  <div class="form-group">
+   <div id="input-id">
+   <div class="col-md-6 input-group input-group-sm">
+    <!-- <span class="input-group-addon">Input</span> -->
+    <div class="">
+    <span><input placeholder="Input Boxs" class="form-control form-control"></input></span>
+    <span><button id="btn-add-input" type="button" onclick="input_box_values();" class="btn btn-primary">Text</button></span>
+    <!-- <div class="row col-md-6" style="height:20px;"></div> -->
+    <span><button id="btn-add-input" type="button" onclick="input_box_values();" class="btn btn-primary">Password</button></span>
+    
+    <!-- <div class="row col-md-6" style="height:20px;"></div> -->
+    <!-- <span><button id="btn-add-input" type="button" onclick="input_box_values();" class="btn btn-primary">Password</button></span> -->
+    </div>
+
+  <div class="" style="height:30px;">
+  </div>
+
+    <div class="">
+   <div class="checkbox">
+  <label><input type="checkbox" value="">Option 1</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" value="">Option 2</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="" disabled>Option 3</label>
+</div>
+    <span><button id="btn-add-input" type="button" onclick="check_box_values();" class="btn btn-primary">Check Box</button></span>
+    </div>
+    
+
+    <div class="row col-md-6"></div>
+    <div>
+    
+    </div>   
+  </div>
+  
+  </div> 
+  </div>
+  <div class="" style="height:30px;">
+  <div><button id="btn-create" type="button" class="btn btn-primary">Create</button></div>
+  </div>
+<div class="form-group">
+    
+</div>  
+  </form>
+</div>
+  
+  <div id="form" class="col-md-6">
+    <form>
+        <div class="form-group">
+          <div id="input-field">
+            
+          </div>
+          <div id="check_box">
+            
+          </div>
+
+          <div id="radio">
+            
+          </div>
+
+        </div>
+    </form>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+var count_id_input=0
+var count_check_box_input=0;
+var JSON_FORM={
+                "form":
+                      [
+                      {
+
+                      }
+                      ]
+              }
+
+function check_box_values(){
+  var checkbox=true
+BootstrapDialog.show({
+title: 'Set Check Box Properties',
+message: '<input id="title" placeholder="set title"></input>',
+type:BootstrapDialog.TYPE_SUCCESS,
+ buttons: [{
+    id: 'btn-ok',         
+    label: 'OK',
+    cssClass: 'btn-primary', 
+    action: function(dialogRef){    
+        dialogRef.close();
+        add_input_box(checkbox);
+    }
+}]
+});
+}
+
+function create_check_box(){
+}
+
+function set_assests(){
+
+}
+function input_box_values(){
+BootstrapDialog.show({
+title: 'Set Input Box Properties',
+message: '<input id="title" placeholder="set title"></input><input placeholder="set placeholder" id="plc-holder"><label><input id="is_password" type="checkbox" value="">Input Password</label>',
+type:BootstrapDialog.TYPE_SUCCESS,
+ buttons: [{
+    id: 'btn-ok',         
+    label: 'OK',
+    cssClass: 'btn-primary', 
+    action: function(dialogRef){    
+        dialogRef.close();
+        add_input_box();
+    }
+}]
+});
+}
+
+function add_input_box(checkbox){
+      var plc_holder = $("#plc-holder").val();
+      var title = $("#title").val();
+      var is_password=$('#is_password').is(':checked')
+      
+      // console.log(plc_holder);
+      // console.log(title);
+      // console.log(is_password);
+
+      count_id_input+=1;
+      id_input_container=count_id_input.toString();
+  
+      var div = document.createElement("DIV");
+        div.setAttribute("id","form-cell-div");
+        div.setAttribute("class", "row");
+        div.setAttribute("style","height:60px;");
+      
+      var div1 = document.createElement("DIV");
+          div.setAttribute("class","row");
+
+      var label_div = document.createElement("DIV");
+        // label_div.setAttribute("contenteditable", "true");
+        label_div.setAttribute("id","label-id"+id_input_container);
+        label_div.setAttribute("style","width:300px;")
+        
+      var span = document.createElement("SPAN");
+        span.setAttribute("class","input-group-addon");
+        span.setAttribute("id","span-label");
+        span.setAttribute("style","width:60px;");
+      
+      var div_container_input= document.createElement("DIV");
+        div_container_input.setAttribute("id",'id-input-container'+id_input_container);
+      
+      var input = document.createElement("INPUT");
+      if(is_password==true){
+       input.setAttribute("type", "password"); 
+       input.setAttribute("placeholder",plc_holder);
+      }
+      else if(checkbox==true){
+        input.setAttribute("type","checkbox");
+      }
+      else{input.setAttribute("type", "text");
+      input.setAttribute("placeholder",plc_holder);
+    }   
+        input.setAttribute("class", "col-md-3 form-control");
+        input.setAttribute("style","width:300px;")
+        input.setAttribute("id","input-id");
+
+        JSON_FORM["form"][0]["widget1"]=input;
+
+        $('#input-field').append(div_container_input);
+        $('#id-input-container'+id_input_container).append(label_div);
+        $('#id-input-container'+id_input_container).append(div1);
+        $('#id-input-container'+id_input_container).append(input);
+        $('#id-input-container'+id_input_container).append(div);
+        $('#label-id'+id_input_container).append('<b>'+title+':');
+}     
+function remove_input_box(){
+
+  }
+  $(document).ready(function(){ 
+  $('#btn-create').on('click',function(){
+
+    html_form=$('#form').html();
+    console.log(JSON_FORM["form"][0]["widget1"]);
+  })    
+        });
+
+  
+</script>
+</body>
+</html>
