@@ -329,6 +329,8 @@ else if(sub_type2==3){
   var input_option=[]
   var select = document.createElement("select");
   select.setAttribute("id","select-"+group);
+  select.setAttribute("class","form-control");
+  select.setAttribute("style","width:180px;");
   for(i=0;i<number_of_radio;i++){ 
   var input = document.createElement("option");
   input.setAttribute("value",radios_value[i]);
@@ -348,11 +350,11 @@ else if(sub_type2==3){
   $('#id_input_container'+obj_htmls['id_input_container']).append(select);
   for(i=0;i<number_of_radio;i++){  
   $('#select-'+group).append(input_option[i]);}
-  $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div']);
+  //$('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div']);
   $('#label-id'+obj_htmls['id_input_container']).append('<b>'+title+':');
 }
   var widget={
-                'sub_type':sub_type,
+                'sub_type':'s',
                 'name':group,
                 'title':title,
                 'number_of_radio':number_of_radio,
@@ -360,6 +362,7 @@ else if(sub_type2==3){
                 'radios_value':radios_value,
                 'check_flag':sub_type2
             }
+
     JSON_FORM["form"].push(widget)
     console.log(radios_value);
     console.log(radios_name);
