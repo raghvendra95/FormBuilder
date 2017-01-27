@@ -111,27 +111,43 @@
 var count_input=0
 var JSON_FORM={"form":[]}
 
-function checkbox_radio_val(){
-  var sub_type_input=
-        '<div><input id="title" name="textinput" type="text" placeholder="Set title"></input></div>'+
-        '<div class"row"></div>'+
-        '<div><input id="group" name="textinput" type="text" placeholder="Set Group"></input></div>'+
-        '<div class"row"></div>'+
-        '<div><input id="radios" name="textinput" type="text" placeholder="Set Radios(,seprated)"></input></div>'+
-        '<div class"row"></div>'+
-        '<div><input id="value" name="textinput" type="text" placeholder="Set values(,seprated)"></input></div>'+
-        '<div class"row"></div>'+
-        '<div><label style="width=30px;"><input id="is_inline" name="is_inline" type="checkbox" value="">Inline?</label></label><label><input id="is_checkbox" name="is_checkbox" type="checkbox" value="">Create Checkboxe</label></div>'        
-        take_input(sub_type_input,2);
-}
+
 function input_box_values(){
         var sub_type_input='<div><label><input id="is_password" name="sub_type_input" type="radio" value="">Input Password</label></div>'+
-        '<div><label><input id="is_comment" name="sub_type_input" type="radio" value="">Input Comment Box</label></div>'+
+        '<div><label><input  id="is_comment" name="sub_type_input" type="radio" value="">Input Comment Box</label></div>'+
         '<div><label><input id="is_text" name="sub_type_input" type="radio" value="">Input Text Box</label></div>'+
-        '<div><input id="title" placeholder="set title"></input></div>'+
-        '<div><input placeholder="set placeholder" id="plc-holder"></div>'+
-        '<div><label><input id="is_required" name="is_required" type="checkbox" value="">IS Required</div>'
+        '<div><input class="col-md-12" id="title" placeholder="set title"></input></div>'+
+        '<div class="col-md-12 row"></div>'+
+        '<div><input class="col-md-12" placeholder="set placeholder" id="plc-holder"></div>'+
+        '<div><label><input class="col-md-12" id="is_required" name="is_required" type="checkbox" value="">IS Required</div>'
         take_input(sub_type_input,1);
+}
+
+function checkbox_radio_val(){
+  var sub_type_input=
+        '<div><input id="title" class="col-md-12" name="textinput" type="text" placeholder="Set title"></input></div>'+
+       '<div class="col-md-12 row"></div>'+
+        '<div><input id="group" class="col-md-12" name="textinput" type="text" placeholder="Set Group"></input></div>'+
+        '<div class="col-md-12 row"></div>'+
+        '<div><input id="radios" class="col-md-12" name="textinput" type="text" placeholder="Set Radios(,seprated)"></input></div>'+
+        '<div class="col-md-12 row"></div>'+
+        '<div ><input id="value" class="col-md-12" name="textinput" type="text" placeholder="Set values(,seprated)"></input></div>'+
+        '<div class="col-md-12 row"></div>'+
+        '<div class="col-md-12"><label style="width=30px;"><input id="is_inline" name="is_inline" type="checkbox" value="">Inline?</label></label><label><input id="is_checkbox" name="is_checkbox" type="checkbox" value="">Create Checkboxe</label></div>'        
+        take_input(sub_type_input,2);
+}
+
+function select_box_value(){
+       var sub_type_input=
+        '<div><input id="title" class="col-md-12" name="textinput" type="text" placeholder="Set title"></input></div>'+
+        '<div class="col-md-12 row"></div>'+
+        '<div><input id="group" class="col-md-12" name="textinput" type="text" placeholder="Set ID/Name"></input></div>'+
+        '<div class="col-md-12 row"></div>'+
+        '<div><input id="radios" class="col-md-12" name="textinput" type="text" placeholder="Set Options(,seprated)"></input></div>'+
+        '<div class="col-md-12 row"></div>'+
+        '<div><input id="value" class="col-md-12" name="textinput" type="text" placeholder="Set values(,seprated)"></input></div>'+
+        '<div class="col-md-12 row"></div>'        
+        take_input(sub_type_input,3);
 }
 
 function take_input(sub_type_input,check_flag){
@@ -149,7 +165,10 @@ BootstrapDialog.show({
                 add_and_remove_input_box();  
                 }
                 else if(check_flag==2){
-                add_radio_and_check_box();
+                add_radio_and_check_box(2);
+                }
+                else if (check_flag==3){
+                add_radio_and_check_box(3);  
                 }
             }
         }]
@@ -245,7 +264,7 @@ function add_and_remove_input_box(){
         JSON_FORM["form"].push(widget)
 }     
 
-function add_radio_and_check_box(){
+function add_radio_and_check_box(sub_type2){
   var title = $("#title").val();
   var group = $("#group").val();
   var radios = $("#radios").val();
@@ -256,7 +275,6 @@ function add_radio_and_check_box(){
     var sub_type='c';
   }else{
     var sub_type='r';
-  
   }
 
   //count number of radio or checkbox button
@@ -276,6 +294,8 @@ function add_radio_and_check_box(){
     radios_value.push(sub_str1);
     }radios_value.push(value);
   
+
+  if(sub_type2==2){
   
   //create radio or checkbox
   var radio_button=[]
@@ -302,7 +322,35 @@ var obj_htmls=html_form_set();
   $('#id-input-container'+obj_htmls['id_input_container']).append(radios_name[i])}
   $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div']);
   $('#label-id'+obj_htmls['id_input_container']).append('<b>'+title+':');
+}
 
+else if(sub_type2==3){
+   //create radio or checkbox
+  var input_option=[]
+  var select = document.createElement("select");
+  select.setAttribute("id","select-"+group);
+  for(i=0;i<number_of_radio;i++){ 
+  var input = document.createElement("option");
+  input.setAttribute("value",radios_value[i]);
+  //input.setAttribute("width",'10px');
+  input.innerText=radios_name[i];
+  input_option.push(input);  
+}
+  console.log(input_option);
+  console.log(select);
+  
+  var obj_htmls=html_form_set();
+
+  $('#input-field').append(obj_htmls['div_container_input']);
+  $('#input-field').append(select);
+  $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['label_div']);
+  $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div1']);
+  $('#id_input_container'+obj_htmls['id_input_container']).append(select);
+  for(i=0;i<number_of_radio;i++){  
+  $('#select-'+group).append(input_option[i]);}
+  $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div']);
+  $('#label-id'+obj_htmls['id_input_container']).append('<b>'+title+':');
+}
   var widget={
                 'sub_type':sub_type,
                 'name':group,
@@ -310,18 +358,23 @@ var obj_htmls=html_form_set();
                 'number_of_radio':number_of_radio,
                 'radios_name':radios_name,
                 'radios_value':radios_value,
-                'check_flag':2
+                'check_flag':sub_type2
             }
     JSON_FORM["form"].push(widget)
     console.log(radios_value);
     console.log(radios_name);
-
+}
+// }
+// }
+function add_select_box(){
 
 }
   $(document).ready(function(){
   $('#btn-create').on('click',function(){
     $.post("/form_builder/",JSON_FORM,function(res){
-       BootstrapDialog.alert('Hi Your Form Is Ready Please Visit http://127.0.0.1:8000/form_builder/1/');
+       // BootstrapDialog.alert('Hi Your Form Is Ready Please Visit http://127.0.0.1:8000/form_builder/1/');
+       window.open('/form_builder/1/')
+    console.log(res)
     });
     console.log(JSON_FORM)
   });    
