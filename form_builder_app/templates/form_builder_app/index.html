@@ -336,7 +336,8 @@ else if(sub_type2==3){
   input.setAttribute("value",radios_value[i]);
   //input.setAttribute("width",'10px');
   input.innerText=radios_name[i];
-  input_option.push(input);  
+  input_option.push(input);
+  var sub_type='s'
 }
   console.log(input_option);
   console.log(select);
@@ -354,7 +355,7 @@ else if(sub_type2==3){
   $('#label-id'+obj_htmls['id_input_container']).append('<b>'+title+':');
 }
   var widget={
-                'sub_type':'s',
+                'sub_type':sub_type,
                 'name':group,
                 'title':title,
                 'number_of_radio':number_of_radio,
