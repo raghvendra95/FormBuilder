@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-		<html>
-		<head>
-		  <title>Form Builder</title>
-		  
-		  <meta charset="utf-8">
-		  <meta name="viewport" content="width=device-width, initial-scale=1">
-		  <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<html>
+			<head>
+			  <title>Form Builder</title>
+			  
+			  <meta charset="utf-8">
+			  <meta name="viewport" content="width=device-width, initial-scale=1">
+			  <!-- Latest compiled and minified CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+			<!-- jQuery library -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<!-- Latest compiled JavaScript -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-		</head>
-		<body>
-		<form class="form-horizontal">
-		<fieldset>
-		<legend>Your Form</legend>
-		<div class="form-group"><label class="col-md-4 control-label"for="radios">radio</label><div class="col-md-4"><div class="radio"><label for="radio0"><input type="radio"name="radios"value="1">radio1</label></div><div class="radio"><label for="radio1"><input type="radio"name="radios"value=" 2"> radio2</label></div></div></div><div class="form-group"><label class="col-md-4 control-label"for="fafa">sfsdf</label><div class="col-md-4"><div class="checkbox"><label for="radio0"><input type="checkbox"name="fafa"value="a">a</label></div><div class="checkbox"><label for="radio1"><input type="checkbox"name="fafa"value=" d"> b</label></div></div></div><div class="form-group"><label class="col-md-4 control-label"for="dasd">ad</label><div class="col-md-4"><select id=dasd name=dasd class=form-control><option value=a>as</option><option value= a> a</option><option value= a> a</option><option value= a> a</option><option value= a> a</option></select></div></div>
-		</fieldset>
-		</form>
-		</body>
-		</html>
+			</head>
+			<body>
+			<form class="form-horizontal">
+			<fieldset>
+			<legend>Your Form</legend>
+			<div class="form-group"><label class="col-md-4 control-label" for="textinput">First Name</label><div class="col-md-4"><input id="input-id"name="input-id"type="text"placeholder="Please Enter First Name......"class="form-control input-md"></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput">Middle Name</label><div class="col-md-4"><input id="input-id"name="input-id"type="text"placeholder="Please Enter Middle Name....."class="form-control input-md"></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput">Last Name</label><div class="col-md-4"><input id="input-id"name="input-id"type="text"placeholder="Please Enter Last Name..."class="form-control input-md"></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput">Current Address</label><div class="col-md-4"><input id="input-id"name="input-id"type="text"placeholder="Please Enter Current Address....."class="form-control input-md"></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput">Permanent Address</label><div class="col-md-4"><input id="input-id"name="input-id"type="text"placeholder="Please Enter Permanent Address...."class="form-control input-md"></div></div><div class="form-group"><label class="col-md-4 control-label"for="gender">Gender</label><div class="col-md-4"><div class="radio"><label for="radio0"><input type="radio"name="gender"value="M">Male</label></div><div class="radio"><label for="radio1"><input type="radio"name="gender"value=" F"> Female</label></div></div></div><div class="form-group"><label class="col-md-4 control-label"for="is_active">Is Active</label><div class="col-md-4"><div class="checkbox"><label for="radio0"><input type="checkbox"name="is_active"value="y">Yes</label></div><div class="checkbox"><label for="radio1"><input type="checkbox"name="is_active"value=" n"> no</label></div></div></div><div class="form-group"><label class="col-md-4 control-label"for="country">Country</label><div class="col-md-4"><select id=country name=country class=form-control><option value=ind>INDIA</option><option value= aus> AUS</option><option value= sa> SA</option><option value= eng> ENG</option><option value= sl> SL</option><option value= o> OTHER</option></select></div></div><div class="form-group"><label class="col-md-4 control-label"for="state">State</label><div class="col-md-4"><select id=state name=state class=form-control><option value=rj>Rajasthan</option><option value= pj> Punjab</option><option value= gj> Gujrat</option><option value= ka> Karnataka</option><option value= o> other</option></select></div></div><div class="form-group"><label class="col-md-4 control-label"for="cities">City</label><div class="col-md-4"><select id=cities name=cities class=form-control><option value=bkn>Bikaner</option><option value= ngo> Nagaur</option><option value= j> Jodhpur</option><option value= jp> Jaipur</option><option value= aj> Ajmer</option></select></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput">Comment</label><div class="col-md-4"><input id="input-id"name="input-id"type="comment"placeholder="Please Leave Comment...."class="form-control input-md"></div></div>
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="singlebutton">Submit</label>
+			  <div class="col-md-4">
+			    <button id="submit" onclick='submit_form();' name="btn-submit" class="center btn btn-primary">Submit</button>
+			  </div>
+			</div>
+			</fieldset>
+			</form>
+			</body>
+			</html>

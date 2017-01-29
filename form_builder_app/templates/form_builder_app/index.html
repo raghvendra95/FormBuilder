@@ -345,14 +345,24 @@ else if(sub_type2==3){
   var obj_htmls=html_form_set();
 
   $('#input-field').append(obj_htmls['div_container_input']);
-  $('#input-field').append(select);
   $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['label_div']);
   $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div1']);
-  $('#id_input_container'+obj_htmls['id_input_container']).append(select);
+  $('#id-input-container'+obj_htmls['id_input_container']).append(select);
   for(i=0;i<number_of_radio;i++){  
   $('#select-'+group).append(input_option[i]);}
   //$('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div']);
+  $('#id-input-container'+obj_htmls['id_input_container']).append('<div class="row" style="height: 25px;"></div>');
   $('#label-id'+obj_htmls['id_input_container']).append('<b>'+title+':');
+ 
+ //  $('#input-field').append(obj_htmls['div_container_input']);
+ //  $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['label_div']);
+ //  $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div1']);
+ //  $('#id_input_container'+obj_htmls['id_input_container']).append(select);
+ //  // $('#input-field').append(select);
+ //  // for(i=0;i<number_of_radio;i++){  
+ //  // $('#select-'+group).append(input_option[i]);}
+ // // $('#id-input-container'+obj_htmls['id_input_container']).append(obj_htmls['div']);
+ //  $('#label-id'+obj_htmls['id_input_container']).append('<b>'+title+':');
 }
   var widget={
                 'sub_type':sub_type,
@@ -368,21 +378,21 @@ else if(sub_type2==3){
     console.log(radios_value);
     console.log(radios_name);
 }
-// }
-// }
+
 function add_select_box(){
 
 }
   $(document).ready(function(){
   $('#btn-create').on('click',function(){
-    $.post("/form_builder/",JSON_FORM,function(res){
+    $.post("/form_builder/1/",JSON_FORM,function(res){
        // BootstrapDialog.alert('Hi Your Form Is Ready Please Visit http://127.0.0.1:8000/form_builder/1/');
-       window.open('/form_builder/1/')
+        window.open('/form_builder/1/')
     console.log(res)
     });
     console.log(JSON_FORM)
   });    
   });
+
 
 </script>
 </body>

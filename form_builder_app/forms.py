@@ -25,7 +25,6 @@ class create_form(object):
 		len_dict =len(new_dict)/7
 	 	for i in range(len_dict):
 	 		if (new_dict['form['+str(i)+'][check_flag]']).replace("u'","").replace("'","")=='1':
-	 		#print str(str(new_dict['form['+str(i)+'][type]'])).replace("u'","").replace("'","")
 				input_box+='<div class="form-group"><label class="col-md-4 control-label" for="textinput">'
 				input_box+=str(new_dict['form['+str(i)+'][title]']).replace("u'","").replace("'","")
 				input_box+='</label><div class="col-md-4">'
@@ -35,7 +34,6 @@ class create_form(object):
 				input_box+='placeholder="'+str(new_dict['form['+str(i)+'][placeholder]']).replace("u'","").replace("'","")+'"'
 				input_box+='class="form-control input-md"></div></div>'
 			if ((new_dict['form['+str(i)+'][check_flag]']).replace("u'","").replace("'","")=='2'):
-				print new_dict
 				num_of_radio=int((new_dict['form['+str(i)+'][number_of_radio]']).replace("u'","").replace("'",""))
 				radios_val=radios_name=[]
 				
@@ -45,10 +43,7 @@ class create_form(object):
 				radios_value=str_radio_val.split(",")
 				radios_name=str_radio_name.split(",")
 
-				# print radios_value,radios_name
-				#print num_of_radio,type(num_of_radio)
 				if ((new_dict['form['+str(i)+'][sub_type]']).replace("u'","").replace("'","")=='c'):
-					print "################"
 					input_box+='<div class="form-group"><label class="col-md-4 control-label"'
 					input_box+='for="'+str(new_dict['form['+str(i)+'][name]']).replace("u'","").replace("'","")+'">'
 					input_box+=str(new_dict['form['+str(i)+'][title]']).replace("u'","").replace("'","")
@@ -60,9 +55,7 @@ class create_form(object):
 						input_box+='value="'+str(radios_value[j]).replace("u'","").replace("'","")+'">'
 						input_box+=str(radios_name[j]).replace("u'","").replace("'","")+'</label></div>'
 					input_box+='</div></div>'
-				#print int((new_dict['form['+str(i)+'][sub_type]']).replace("u'","").replace("'",""))
 	      		if ((new_dict['form['+str(i)+'][sub_type]']).replace("u'","").replace("'","")=='r'):
-					print "*****************" 
 					num_of_radio=int((new_dict['form['+str(i)+'][number_of_radio]']).replace("u'","").replace("'",""))
 					radios_val=radios_name=[]
 					
@@ -77,7 +70,6 @@ class create_form(object):
 					input_box+='</label>'
 		  			input_box+='<div class="col-md-4">'
 		  			for j in range(num_of_radio):
-		  				#print j
 		  				input_box+='<div class="radio"><label for="radio'+str(j)+'"'+'><input type="radio"'
 						input_box+='name="'+str(new_dict['form['+str(i)+'][name]']).replace("u'","").replace("'","")+'"'
 						input_box+='value="'+str(radios_value[j]).replace("u'","").replace("'","")+'">'
@@ -101,7 +93,6 @@ class create_form(object):
 				input_box+='<select id='+str(new_dict['form['+str(i)+'][name]']).replace("u'","").replace("'","")+' name='
 				input_box+=str(new_dict['form['+str(i)+'][name]']).replace("u'","").replace("'","")+' class=form-control>'
 				for j in range(num_of_radio):
-					#print j
 					input_box+='<option value='+str(radios_value[j]).replace("u'","").replace("'","")+'>'
 					input_box+=str(radios_name[j]).replace("u'","").replace("'","")
 					input_box+='</option>'
