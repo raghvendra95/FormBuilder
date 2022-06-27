@@ -44,7 +44,7 @@ python-debian==0.1.21-nmu2ubuntu2
 python-gnupg==0.3.9
 pyxdg==0.25
 redis==2.10.5
-reportlab==3.0
+reportlab==3.5.55
 repoze.lru==0.6
 requests==2.2.1
 sessioninstaller==0.0.0
