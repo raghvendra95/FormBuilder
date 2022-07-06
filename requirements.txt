@@ -23,7 +23,7 @@ django-email-extras==0.3.3
 django-forms-builder==0.13.0
 duplicity==0.6.23
 future==0.15.0
-html5lib==0.999
+html5lib==0.999999999
 httplib2==0.8
 lockfile==0.8
 lxml==3.3.3
